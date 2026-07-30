@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline';">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <title>LE BORDEL DE L'UNDERGROUND - Blog Cyber & Vie Privée</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #00ff66;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px dashed #00ff66;
+            padding: 20px;
+            background-color: #050505;
+        }
+
+        .terminal-banner {
+            border: 2px solid #00ff66;
+            background-color: #000c02;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .terminal-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00ff66;
+            text-transform: uppercase;
+            border-bottom: 1px dashed #00ff66;
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .terminal-title:hover {
+            color: #00ffcc;
+            background-color: #001a05;
+        }
+
+        .terminal-banner p {
+            margin: 8px 0;
+        }
+
+        .terminal-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 15px 0 0 0;
+        }
+
+        .terminal-list li {
+            margin: 6px 0;
+        }
+
+        #secret-box {
+            display: none;
+            border: 2px solid #00ffcc;
+            background-color: #001a0f;
+            padding: 15px;
+            margin-bottom: 25px;
+        }
+
+        #secret-box h3 {
+            color: #00ffcc;
+            margin-top: 0;
+            border-bottom: 1px dashed #00ffcc;
+            padding-bottom: 5px;
+        }
+
+        .articles-feed {
+            margin-top: 20px;
+        }
+
+        .article-card {
+            border: 1px solid #005522;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #0a0a0a;
+        }
+
+        .article-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed #005522;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .article-card h2 {
+            color: #00ffcc;
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .article-timestamp {
+            font-size: 0.8rem;
+            color: #00aa44;
+            background-color: #001100;
+            padding: 2px 6px;
+            border: 1px solid #005522;
+        }
+
+        .article-content {
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            border-top: 2px solid #00ff66;
+            padding-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .counter {
+            background-color: #001100;
+            color: #00ff00;
+            padding: 5px 10px;
+            font-weight: bold;
+            border: 1px solid #00ff66;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .footer-copyright {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #00aa44;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- En-tête / Le titre déclenche le secret au clic -->
+        <header class="terminal-banner">
+            <h1 class="terminal-title" onclick="revealSecret()">LE BORDEL DE L'UNDERGROUND</h1>
+            <p>Bienvenue dans mon bunker numérique. Ici, je présente mes outils de cyber-sécurité et je partage mes recherches sur la protection de la vie privée. </p>
+            
+            <ul class="terminal-list">
+                <li>[>] Mes Outils Cyber-S&eacute;curit&eacute; (Code & Binaires)</li>
+                <li>[#] Vie Priv&eacute;e : Chiffrement & Anonymat (Th&eacuteorie & Pratique)</li>
+                <li>[!] Analyse de Menaces (Reverse Engineering)</li>
+                <li>[$] S&eacute;curit&eacute; Offensive : Whitehat Stuff</li>
+                <li>[&] Le blog qui remet les pendules &agrave; l'heure</li>
+                <li>[@] 100% Vieux Web : Design brut et authentique</li>
+            </ul>
+        </header>
+
+        <!-- Boîte secrète cachée par défaut -->
+        <div id="secret-box">
+            <h3>[ACCÈS ROOT DÉTECTÉ] - Message chiffré</h3>
+            <p>Félicitations, tu as trouvé la faille. Tu fais maintenant partie des initiés. N'oublie pas : <em>la curiosité est un viatique pour l'underground</em>. Restez dans l'ombre.</p>
+            <p><code>> Statut du noyau : 100% chiffré (AES-GCM)</code></p>
+        </div>
+
+        <!-- Fil d'actualité / Articles -->
+        <main class="articles-feed">
+            <!-- ARTICLE 04 -->
+            <div class="article-card">
+                <div class="article-header">
+                    <h2>[ARTICLE 04] - Présentation de SAFE.OS : Le bureau virtuel impénétrable</h2>
+                    <span class="article-timestamp">30/07/2026 - 17:50</span>
+                </div>
+                <div class="article-content">
+                    <p>Comment reprendre le contrôle total de son environnement informatique quand les systèmes modernes espionnent le moindre de nos mouvements ? Je l'ai fait avec **SAFE.OS** : un mock d'interface de bureau entièrement thématisé façon Matrix, conçu pour tourner de manière totalement locale et indépendante. Au programme : une séquence de boot sécurisée, un bloc-notes auto-chiffré en **AES-GCM** réel pour protéger mes données sensibles des regards extérieurs, et un design brut sans aucune concession. Un espace taillé pour l'isolement numérique et la liberté. .</p>
+                </div>
+            </div>
+
+            <!-- ARTICLE 03 -->
+            <div class="article-card">
+                <div class="article-header">
+                    <h2>[ARTICLE 03] - Surveillance furtive : Quand le contrôle parental est dépassé</h2>
+                    <span class="article-timestamp">30/07/2026 - 17:35</span>
+                </div>
+                <div class="article-content">
+                    <p>Les logiciels de contrôle parental classiques sont souvent lourds, facilement contournables par les plus malins et truffés de mouchards publicitaires. J'ai  développé une alternative maison bien plus efficace et totalement invisible. Le programme s'exécute en arrière-plan sans interface graphique apparente au démarrage, et capture discrètement l'écran du PC toutes les 30 secondes pour stocker un journal visuel exact des activités en ligne. De quoi garder un œil sur ce qui se passe réellement, sans fioritures et avec une efficacité redoutable. </p>
+                </div>
+            </div>
+
+            <!-- ARTICLE 02 -->
+            <div class="article-card">
+                <div class="article-header">
+                    <h2>[ARTICLE 02] - Analyseur de robustesse : Teste mes mots de passe</h2>
+                    <span class="article-timestamp">30/07/2026 - 17:10</span>
+                </div>
+                <div class="article-content">
+                    <p>La plupart des utilisateurs pensent qu'un mot de passe de 8 caractères avec une majuscule et un chiffre suffit à blinder un compte. Erreur fatale. Je présente ici mon détecteur de vulnérabilité de mots de passe : un outil local conçu pour analyser l'entropie, simuler des temps de craquage par force brute et détecter les patterns faibles en une fraction de seconde. Zéro compromis, zéro fuite de données vers le cloud : tout s'exécute en local dans mon environnement. </p>
+                </div>
+            </div>
+
+            <!-- ARTICLE 01 -->
+            <div class="article-card">
+                <div class="article-header">
+                    <h2>[ARTICLE 01] - Bienvenue dans la matrice</h2>
+                    <span class="article-timestamp">30/07/2026 - 14:24</span>
+                </div>
+                <div class="article-content">
+                    <p>Premier test du blog. La présentation de mes outils de cybersécurité arrive très bientôt. Restez connectés et surveillez vos arrières.</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Pied de page -->
+        <footer>
+            <p>SOUS CONSTRUCTION PERMANENTE.</p>
+            <div class="counter">VISITEURS DEPUIS 2026 : 00741</div>
+            <div class="footer-copyright">&copy; 2026 MARTIN Nolane - Tous droits r&eacute;serv&eacute;s.</div>
+        </footer>
+    </div>
+
+    <script>
+        function revealSecret() {
+            let box = document.getElementById('secret-box');
+            if (box.style.display === 'block') {
+                box.style.display = 'none';
+            } else {
+                box.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>
