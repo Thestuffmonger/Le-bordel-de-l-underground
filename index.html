@@ -117,6 +117,25 @@
             font-weight: bold;
         }
 
+        /* Style spécifique pour le bouton de téléchargement externe */
+        .download-link-btn {
+            background-color: #1a0000;
+            color: #ff3333;
+            border: 1px dashed #ff3333;
+            padding: 8px 12px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .download-link-btn:hover {
+            background-color: #ff3333;
+            color: #000000;
+            font-weight: bold;
+        }
+
         .articles-feed {
             margin-top: 20px;
         }
@@ -223,13 +242,14 @@
             <p><code>> Statut du noyau : 100% chiffré (AES-GCM)</code></p>
         </div>
 
-        <!-- Onglets de filtrage des articles -->
+        <!-- Onglets de filtrage des articles + Bouton vers la page de téléchargement -->
         <nav class="tabs-nav" aria-label="Filtres des articles">
             <button class="tab-btn active" onclick="filterArticles('all', event)">[ * ] Tous (12)</button>
             <button class="tab-btn" onclick="filterArticles('antivirus', event)">[ ! ] Antivirus & Sécurité</button>
             <button class="tab-btn" onclick="filterArticles('outils', event)">[ # ] Outils & Chiffrement</button>
             <button class="tab-btn" onclick="filterArticles('jeux', event)">[ > ] Jeux & Rétro</button>
             <button class="tab-btn" onclick="filterArticles('politique', event)">[ $ ] Chroniques & Politique</button>
+            <a href="telechargements.html" class="download-link-btn">[ ↓ ] Zone Téléchargements</a>
         </nav>
 
         <!-- Fil d'actualité / Articles -->
@@ -391,12 +411,10 @@
         }
 
         function filterArticles(category, event) {
-            // Gestion de la classe active sur les boutons via l'événement natif
             let buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.currentTarget.classList.add('active');
 
-            // Filtrage des cartes d'articles
             let articles = document.querySelectorAll('.article-card');
             articles.forEach(article => {
                 if (category === 'all') {
