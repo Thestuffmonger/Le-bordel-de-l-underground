@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self' 'unsafe-inline';">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <title>LE BORDEL DE L'UNDERGROUND - Blog Cyber & Vie Privée</title>
     <style>
@@ -22,7 +22,6 @@
             border: 2px dashed #00ff66;
             padding: 20px;
             background-color: #050505;
-            /* Empêche les coupures bizarres du contenu global */
             box-sizing: border-box;
         }
 
@@ -163,6 +162,15 @@
             margin-top: 10px;
         }
 
+        .article-image {
+            width: 100%;
+            max-width: 100%;
+            border: 1px solid #00ff66;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
@@ -217,16 +225,31 @@
 
         <!-- Onglets de filtrage des articles -->
         <nav class="tabs-nav" aria-label="Filtres des articles">
-            <button class="tab-btn active" onclick="filterArticles('all', this)">[ * ] Tous (11)</button>
-            <button class="tab-btn" onclick="filterArticles('antivirus', this)">[ ! ] Antivirus & Sécurité</button>
-            <button class="tab-btn" onclick="filterArticles('outils', this)">[ # ] Outils & Chiffrement</button>
-            <button class="tab-btn" onclick="filterArticles('jeux', this)">[ > ] Jeux & Rétro</button>
-            <button class="tab-btn" onclick="filterArticles('politique', this)">[ $ ] Chroniques & Politique</button>
+            <button class="tab-btn active" onclick="filterArticles('all', event)">[ * ] Tous (12)</button>
+            <button class="tab-btn" onclick="filterArticles('antivirus', event)">[ ! ] Antivirus & Sécurité</button>
+            <button class="tab-btn" onclick="filterArticles('outils', event)">[ # ] Outils & Chiffrement</button>
+            <button class="tab-btn" onclick="filterArticles('jeux', event)">[ > ] Jeux & Rétro</button>
+            <button class="tab-btn" onclick="filterArticles('politique', event)">[ $ ] Chroniques & Politique</button>
         </nav>
 
         <!-- Fil d'actualité / Articles -->
         <main class="articles-feed">
-            <!-- ARTICLE 11 (NOUVEAU : Antivirus, Chiffrement & Guerre avec la Mairie) -->
+            <!-- ARTICLE 12 (NOUVEAU : MARTIN OSINT Dossier Builder v2.0) -->
+            <div class="article-card" data-category="outils politique">
+                <div class="article-header">
+                    <h2>[ARTICLE 12] - MARTIN OSINT Dossier Builder v2.0 : L'investigation multi-critères à portée de main</h2>
+                    <span class="article-timestamp">09/10/2026 - 17:15</span>
+                </div>
+                <div class="article-content">
+                    <p>Pour mener à bien nos petites investigations numériques et recenser proprement les données publiques, rien ne vaut un outil fait maison. Je vous présente aujourd'hui la v2.0 de mon générateur de dossiers d'investigation : <strong>MARTIN OSINT Dossier Builder</strong>.</p>
+                    <p>Conçu pour centraliser les recherches de manière structurée, cet outil permet d'injecter plusieurs critères de ciblage en simultané : Nom & Prénom, Zone géographique, Pseudo, Numéro de téléphone, Adresse email ou encore Domaine / Site web. Un clic sur le bouton de génération compile l'ensemble des requêtes pour dresser un profil clair et rigoureux, le tout en local, sans fuite vers des serveurs tiers. Parfait pour veiller au grain et analyser ce qui se trame sur le net !</p>
+                    
+                    <!-- Intégration de l'image OSINT -->
+                    <img src="osint-builder.png" alt="MARTIN OSINT Dossier Builder v2.0" class="article-image">
+                </div>
+            </div>
+
+            <!-- ARTICLE 11 -->
             <div class="article-card" data-category="politique antivirus outils">
                 <div class="article-header">
                     <h2>[ARTICLE 11] - Entre codes, chiffrement .ecrasatator et guérilla satirique anti-mairie</h2>
@@ -367,11 +390,11 @@
             }
         }
 
-        function filterArticles(category, btnElement) {
-            // Gestion de la classe active sur les boutons
+        function filterArticles(category, event) {
+            // Gestion de la classe active sur les boutons via l'événement natif
             let buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-            btnElement.classList.add('active');
+            event.currentTarget.classList.add('active');
 
             // Filtrage des cartes d'articles
             let articles = document.querySelectorAll('.article-card');
