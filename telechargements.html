@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline';">
+    <title>INDEX DE LA ZONE DE NON-DROIT - TELECHARGEMENTS BRUTS</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            font-family: "Times New Roman", Times, serif;
+            margin: 15px;
+            padding: 10px;
+            line-height: 1.3;
+        }
+
+        .chaos-container {
+            max-width: 900px;
+            margin: auto;
+            border: 3px solid #ff0000;
+            padding: 20px;
+            background-color: #ffffcc;
+        }
+
+        h1 {
+            color: #ff0000;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            text-decoration: underline;
+            margin-top: 0;
+        }
+
+        .blink {
+            animation: blinker 0.8s linear infinite;
+            color: #ff0000;
+            font-weight: bold;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+
+        .warning-box {
+            background-color: #000000;
+            color: #ffff00;
+            padding: 10px;
+            font-family: monospace;
+            border: 2px dashed red;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            font-family: monospace;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: block;
+            color: #0000ff;
+        }
+
+        .file-dump {
+            border: 1px dashed #000000;
+            padding: 12px;
+            margin-bottom: 15px;
+            background-color: #ffffff;
+        }
+
+        .file-dump h3 {
+            margin: 0 0 5px 0;
+            color: #990000;
+            font-family: monospace;
+        }
+
+        .file-dump a {
+            background-color: #0000ff;
+            color: #ffffff;
+            padding: 3px 8px;
+            text-decoration: none;
+            font-family: monospace;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 8px;
+            border: 1px solid #000;
+        }
+
+        .file-dump a:hover {
+            background-color: #ff0000;
+        }
+
+        footer {
+            margin-top: 30px;
+            border-top: 2px solid #000;
+            padding-top: 10px;
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chaos-container">
+        <a href="index.html" class="back-link">&lt;&lt; [RETOURNER DANS LE BUNKER SÉCURISÉ]</a>
+        
+        <h1>ATTENTION : ZONE DE TÉLÉCHARGEMENT NON FILTRÉE !!!</h1>
+        
+        <div class="warning-box">
+            [!] ERREUR SYSTÈME : Vous entrez dans le répertoire brut des codes sources. Aucun serveur cloud, aucune garantie, aucun filtre corporatiste. Tout est balancé tel quel. Prenez ce qu'il y a à prendre et ne posez pas de questions. <span class="blink">RISQUE MAXIMAL</span>
+        </div>
+
+        <p><i>"Si vous cherchez de la documentation propre avec des jolies bulles d'aide et du support technique, vous vous êtes trompé d'adresse. Ici c'est du brut de fonderie."</i></p>
+
+        <hr style="border: 1px solid #000; margin: 20px 0;">
+
+        <h2>// LISTE DES FICHIERS EN LIBRE-SERVICE :</h2>
+
+        <!-- FICHIER : Résolveur IP -->
+        <div class="file-dump">
+            <h3>ip-resolver.txt</h3>
+            <p>Un petit script front-end dégueulasse pour choper l'adresse IP d'un nom de domaine directement à l'arrache depuis le navigateur.</p>
+            <span style="font-family: monospace; font-size: 0.8rem; color: #555;">Format : Texte Brut (.txt)</span><br>
+            <a href="ip-resolver.txt" download>[ TÉLÉCHARGER LE CODE ]</a>
+        </div>
+
+        <footer>
+            <p>LE BORDEL DE L'UNDERGROUND - SERVEUR LOCAL AUTONOME - AUCUN DROIT ACCORDÉ AUX PILLEURS DE CODE.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
