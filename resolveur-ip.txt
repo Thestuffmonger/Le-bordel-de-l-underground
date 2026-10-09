@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>IP Grabber de bas étage</title>
+    <style>
+        body { background: #fff; color: #000; font-family: monospace; padding: 20px; }
+    </style>
+</head>
+<body>
+    <h3>Résolveur IP à l'arrache</h3>
+    <input type="text" id="siteInput" placeholder="ex: google.com">
+    <button onclick="resolveIP()">CHERCHER</button>
+    <p id="resultat"></p>
+
+    <script>
+        function resolveIP() {
+            let site = document.getElementById('siteInput').value.trim();
+            // Nettoyage basique
+            site = site.replace(/(^\w+:|^)\/\//, '').replace(/\/.*$/, '');
+            if(!site) return;
+            
+            // Utilisation d'une API publique gratuite pour choper l'IP en JS
+            fetch('https://dns.google/resolve?name=' + site)
+                .then(response => response.json())
+                .then(data => {
+                    if(data.Answer) {
+                        let ip = data.Answer.find(record => record.type === 1);
+                        document.getElementById('resultat').innerHTML = ip ? "IP de " + site + " : " + ip.data : "Introuvable.";
+                    } else {
+                        document.getElementById('resultat').innerHTML = "Erreur de résolution.";
+                    }
+                })
+                .catch(err => {
+                    document.getElementById('resultat').innerHTML = "Erreur réseau.";
+                });
+        }
+    </script>
+</body>
+</html>
