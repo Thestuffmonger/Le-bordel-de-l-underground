@@ -22,6 +22,8 @@
             border: 2px dashed #00ff66;
             padding: 20px;
             background-color: #050505;
+            /* Empêche les coupures bizarres du contenu global */
+            box-sizing: border-box;
         }
 
         .terminal-banner {
@@ -89,6 +91,33 @@
             padding-bottom: 5px;
         }
 
+        /* Styles pour les onglets de filtrage */
+        .tabs-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #005522;
+            padding-bottom: 15px;
+        }
+
+        .tab-btn {
+            background-color: #001100;
+            color: #00ff66;
+            border: 1px solid #00ff66;
+            padding: 8px 12px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background-color: #00ff66;
+            color: #000000;
+            font-weight: bold;
+        }
+
         .articles-feed {
             margin-top: 20px;
         }
@@ -98,6 +127,11 @@
             padding: 15px;
             margin-bottom: 20px;
             background-color: #0a0a0a;
+            display: block;
+        }
+
+        .article-card.hidden {
+            display: none;
         }
 
         .article-header {
@@ -134,6 +168,7 @@
             margin-top: 40px;
             border-top: 2px solid #00ff66;
             padding-top: 15px;
+            padding-bottom: 10px;
             font-size: 0.9rem;
         }
 
@@ -180,10 +215,31 @@
             <p><code>> Statut du noyau : 100% chiffré (AES-GCM)</code></p>
         </div>
 
+        <!-- Onglets de filtrage des articles -->
+        <nav class="tabs-nav" aria-label="Filtres des articles">
+            <button class="tab-btn active" onclick="filterArticles('all', this)">[ * ] Tous (11)</button>
+            <button class="tab-btn" onclick="filterArticles('antivirus', this)">[ ! ] Antivirus & Sécurité</button>
+            <button class="tab-btn" onclick="filterArticles('outils', this)">[ # ] Outils & Chiffrement</button>
+            <button class="tab-btn" onclick="filterArticles('jeux', this)">[ > ] Jeux & Rétro</button>
+            <button class="tab-btn" onclick="filterArticles('politique', this)">[ $ ] Chroniques & Politique</button>
+        </nav>
+
         <!-- Fil d'actualité / Articles -->
         <main class="articles-feed">
+            <!-- ARTICLE 11 (NOUVEAU : Antivirus, Chiffrement & Guerre avec la Mairie) -->
+            <div class="article-card" data-category="politique antivirus outils">
+                <div class="article-header">
+                    <h2>[ARTICLE 11] - Entre codes, chiffrement .ecrasatator et guérilla satirique anti-mairie</h2>
+                    <span class="article-timestamp">09/10/2026 - 16:45</span>
+                </div>
+                <div class="article-content">
+                    <p>Entre deux lignes de code pour patcher un vieux jeu de Pong et quelques sessions de rétro-gaming, il faut bien s'occuper des affaires courantes. Ce mois-ci, l'ambiance oscille entre le développement de mon nouveau mini-antivirus local, la mise au point de mon script de chiffrement textuel <strong>.ecrasatator</strong> (parce que laisser ses données en clair sur le web est une hérésie), et... une petite guerre ouverte improvisée avec le gouvernement local.</p>
+                    <p>La raison ? Une magnifique page de communication municipale fraîchement créée pour jeter leurs concurrents en pâture sur la place publique. Un bel acte de lâcheté institutionnel que je me suis empressé de tourner en ridicule en mode satire totale. Résultat : une ambiance de dissident retranché dans son bunker numérique et le sentiment grisant de mener une résistance 2.0. Restez planqués, le système veille, mais nous aussi ! 💻🔥</p>
+                </div>
+            </div>
+
             <!-- ARTICLE 10 -->
-            <div class="article-card">
+            <div class="article-card" data-category="jeux">
                 <div class="article-header">
                     <h2>[ARTICLE 10] - TetrisOS : Mon propre système d'exploitation rétro avec jeu intégré</h2>
                     <span class="article-timestamp">06/08/2026 - 14:00</span>
@@ -194,7 +250,7 @@
             </div>
 
             <!-- ARTICLE 09 -->
-            <div class="article-card">
+            <div class="article-card" data-category="jeux">
                 <div class="article-header">
                     <h2>[ARTICLE 09] - Astro Code : Présentation de mon nouveau jeu 2D rétro</h2>
                     <span class="article-timestamp">02/08/2026 - 18:30</span>
@@ -205,7 +261,7 @@
             </div>
 
             <!-- ARTICLE 08 -->
-            <div class="article-card">
+            <div class="article-card" data-category="jeux">
                 <div class="article-header">
                     <h2>[ARTICLE 08] - Moto Trial 2D : Derrière le guidon, un jeu pensé avant tout pour les enfants</h2>
                     <span class="article-timestamp">02/08/2026 - 11:45</span>
@@ -216,7 +272,7 @@
             </div>
 
             <!-- ARTICLE 07 -->
-            <div class="article-card">
+            <div class="article-card" data-category="outils">
                 <div class="article-header">
                     <h2>[ARTICLE 07] - MartinCoin Miner // Protocol v4.0 : Le mineur local nouvelle génération</h2>
                     <span class="article-timestamp">01/08/2026 - 16:15</span>
@@ -227,7 +283,7 @@
             </div>
 
             <!-- ARTICLE 06 -->
-            <div class="article-card">
+            <div class="article-card" data-category="antivirus">
                 <div class="article-header">
                     <h2>[ARTICLE 06] - VirusScan2026 - Retro Edition : Scanner de fichiers et détection de menaces par empreintes 2026</h2>
                     <span class="article-timestamp">31/07/2026 - 18:30</span>
@@ -238,7 +294,7 @@
             </div>
 
             <!-- ARTICLE 05 -->
-            <div class="article-card">
+            <div class="article-card" data-category="outils">
                 <div class="article-header">
                     <h2>[ARTICLE 05] - CryptoNotepad : Le bloc-notes auto-chiffré sans mot de passe</h2>
                     <span class="article-timestamp">31/07/2026 - 16:45</span>
@@ -249,7 +305,7 @@
             </div>
 
             <!-- ARTICLE 04 -->
-            <div class="article-card">
+            <div class="article-card" data-category="outils antivirus">
                 <div class="article-header">
                     <h2>[ARTICLE 04] - Présentation de SAFE.OS : Le bureau virtuel impénétrable</h2>
                     <span class="article-timestamp">30/07/2026 - 17:50</span>
@@ -260,7 +316,7 @@
             </div>
 
             <!-- ARTICLE 03 -->
-            <div class="article-card">
+            <div class="article-card" data-category="antivirus">
                 <div class="article-header">
                     <h2>[ARTICLE 03] - Surveillance furtive : Quand le contrôle parental est dépassé</h2>
                     <span class="article-timestamp">30/07/2026 - 17:35</span>
@@ -271,7 +327,7 @@
             </div>
 
             <!-- ARTICLE 02 -->
-            <div class="article-card">
+            <div class="article-card" data-category="outils">
                 <div class="article-header">
                     <h2>[ARTICLE 02] - Analyseur de robustesse : Teste mes mots de passe</h2>
                     <span class="article-timestamp">30/07/2026 - 17:10</span>
@@ -282,7 +338,7 @@
             </div>
 
             <!-- ARTICLE 01 -->
-            <div class="article-card">
+            <div class="article-card" data-category="politique">
                 <div class="article-header">
                     <h2>[ARTICLE 01] - Bienvenue dans la matrice</h2>
                     <span class="article-timestamp">30/07/2026 - 14:24</span>
@@ -309,6 +365,28 @@
             } else {
                 box.style.display = 'block';
             }
+        }
+
+        function filterArticles(category, btnElement) {
+            // Gestion de la classe active sur les boutons
+            let buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            // Filtrage des cartes d'articles
+            let articles = document.querySelectorAll('.article-card');
+            articles.forEach(article => {
+                if (category === 'all') {
+                    article.classList.remove('hidden');
+                } else {
+                    let categories = article.getAttribute('data-category');
+                    if (categories && categories.includes(category)) {
+                        article.classList.remove('hidden');
+                    } else {
+                        article.classList.add('hidden');
+                    }
+                }
+            });
         }
     </script>
 
